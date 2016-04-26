@@ -11,7 +11,12 @@ function onRequest(req, res){
 	if (req.method == 'GET' && req.url == '/'){
 		res.writeHead(200, {"Content-Type": "text/html"});
 		fs.createReadStream("./index.html").pipe(res);
-	} else{
+	} else if(req.method == 'GET' && req.url == '/about'){
+		res.writeHead(200, {"Content-Type": "text/html"});
+		res.write("about requested");
+		res.end();
+	} 
+	else{
 		send404Error(res);
 	}
 
